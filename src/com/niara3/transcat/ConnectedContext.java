@@ -53,8 +53,9 @@ public class ConnectedContext {
 				return;
 			}
 			if (readBuffer.position() > 0) {
-				Log.d("SocketChannel", Arrays.toString(
-						Arrays.copyOf(readBuffer.array(), readBuffer.position())));
+				byte[] buf = new byte[readBuffer.position()];
+				System.arraycopy(readBuffer.array(), 0, buf, 0, buf.length);
+				Log.d("SocketChannel", Arrays.toString(buf));
 			}
 			return;
 		} catch (IOException e) {
